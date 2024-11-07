@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>ROI Calculator</h1>
+    </header>
+    <main>
+        <section>
+            <label for="netProfit">Net Profit:</label>
+            <input type="number" id="netProfit" placeholder="Enter Net Profit">
+            <br>
+            <label for="initialInvestment">Initial Investment:</label>
+            <input type="number" id="initialInvestment" placeholder="Enter Initial Investment">
+            <br>
+            <button onclick="calculateROI()">Calculate ROI</button>
+            <h3 id="result"></h3>
+            <button onclick="location.href='index.html'">Back to Terms</button>
+        </section>
+    </main>
+    <script>
+        function calculateROI() {
+            const netProfit = parseFloat(document.getElementById("netProfit").value);
+            const initialInvestment = parseFloat(document.getElementById("initialInvestment").value);
+            if (isNaN(netProfit) || isNaN(initialInvestment) || initialInvestment <= 0) {
+                document.getElementById("result").innerText = "Please enter valid net profit and initial investment.";
+                return;
+            }
+            const roi = (netProfit / initialInvestment) * 100;
+            document.getElementById("result").innerText = `ROI: ${roi.toFixed(2)}%`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net Margin Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Net Margin Calculator</h1>
+    </header>
+    <main>
+        <section>
+            <label for="revenue">Revenue:</label>
+            <input type="number" id="revenue" placeholder="Enter Revenue">
+            <br>
+            <label for="netIncome">Net Income:</label>
+            <input type="number" id="netIncome" placeholder="Enter Net Income">
+            <br>
+            <button onclick="calculateNetMargin()">Calculate Net Margin</button>
+            <h3 id="result"></h3>
+            <button onclick="location.href='index.html'">Back to Terms</button>
+        </section>
+    </main>
+    <script>
+        function calculateNetMargin() {
+            const revenue = parseFloat(document.getElementById("revenue").value);
+            const netIncome = parseFloat(document.getElementById("netIncome").value);
+            if (isNaN(revenue) || isNaN(netIncome) || revenue <= 0) {
+                document.getElementById("result").innerText = "Please enter valid revenue and net income.";
+                return;
+            }
+            const netMargin = (netIncome / revenue) * 100;
+            document.getElementById("result").innerText = `Net Margin: ${netMargin.toFixed(2)}%`;
+        }
+    </script>
+</body>
+</html>

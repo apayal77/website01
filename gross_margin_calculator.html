@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gross Margin Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Gross Margin Calculator</h1>
+    </header>
+    <main>
+        <section>
+            <label for="revenue">Revenue:</label>
+            <input type="number" id="revenue" placeholder="Enter Revenue">
+            <br>
+            <label for="cogs">Cost of Goods Sold (COGS):</label>
+            <input type="number" id="cogs" placeholder="Enter COGS">
+            <br>
+            <button onclick="calculateGrossMargin()">Calculate Gross Margin</button>
+            <h3 id="result"></h3>
+            <button onclick="location.href='index.html'">Back to Terms</button>
+        </section>
+    </main>
+    <script>
+        function calculateGrossMargin() {
+            const revenue = parseFloat(document.getElementById("revenue").value);
+            const cogs = parseFloat(document.getElementById("cogs").value);
+
+            if (isNaN(revenue) || isNaN(cogs) || revenue <= 0) {
+                document.getElementById("result").innerText = "Please enter valid revenue and COGS.";
+                return;
+            }
+
+            const grossMargin = ((revenue - cogs) / revenue) * 100;
+            document.getElementById("result").innerText = `Gross Margin: ${grossMargin.toFixed(2)}%`;
+        }
+    </script>
+</body>
+</html>
